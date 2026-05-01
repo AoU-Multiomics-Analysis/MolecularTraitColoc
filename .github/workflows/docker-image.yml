@@ -1,8 +1,10 @@
 name: Docker Image CI
 
 on:
-  #push:
-  #  branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+    paths: 'scripts/*'
+
   pull_request:
     branches: [ "main" ]
 
@@ -35,6 +37,6 @@ jobs:
         with:
           context: .
           file: ./envs/Dockerfile
-          push: False 
+          push:  True 
           tags: |
             ${{ steps.meta.outputs.tags }}
